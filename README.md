@@ -100,7 +100,7 @@
   <div class="container">
     <h1 class="blink"> BloxFun v1.6 </h1>
     <p><b>The ULTIMATE Roblox Lag Destroyer!!</b></p>
-    <img src="https://i.imgur.com/5jvMzGZ.gif" alt="Dancing Roblox" class="gif" width="200" />
+     <img src="bloxfun.png" alt="FPS Booster" class="png" width="200" />
     <h2>What It Do:</h2>
     <ul>
       <li>✔️ Boosts Roblox to WARP SPEED</li>
