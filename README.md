@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title> BloxFun EXTREME!! </title>
+  <title>BloxFun EXTREME!!</title>
   <style>
     body {
-      background: url('https://i.imgur.com/OiEMgM8.gif'); /* starfield GIF */
+      background: url('https://media.tenor.com/CODED-GIF.gif') /* replace with actual gif URL */ center center / cover no-repeat;
       font-family: "Courier New", monospace;
       color: #00FF00;
       margin: 0;
@@ -22,7 +22,7 @@
     }
 
     .container {
-      background: black;
+      background: rgba(0, 0, 0, 0.8);
       border: 5px double red;
       margin: 20px auto;
       width: 90%;
@@ -47,7 +47,7 @@
 
     .download-button {
       font-size: 28px;
-      background: url('https://tenor.com/ru/view/coding-gif-25731151') repeat;
+      background: url('https://media.tenor.com/CODED-GIF.gif') repeat; /* same coding gif */
       color: #FFFF00;
       border: 5px solid red;
       padding: 20px;
@@ -98,7 +98,7 @@
   <marquee class="marquee" scrollamount="10" behavior="alternate">🚨💾 DOWNLOAD BloxFun v1.6 - 1000% FPS BOOST! 💾🚨</marquee>
 
   <div class="container">
-    <h1 class="blink"> BloxFun v1.6 </h1>
+    <h1 class="blink">BloxFun v1.6</h1>
     <p><b>The ULTIMATE Roblox Lag Destroyer!!</b></p>
     <img src="https://i.imgur.com/5jvMzGZ.gif" alt="Dancing Roblox" class="gif" width="200" />
     <h2>What It Do:</h2>
