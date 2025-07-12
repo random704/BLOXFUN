@@ -47,7 +47,7 @@
 
     .download-button {
       font-size: 28px;
-      background: url('https://i.imgur.com/L4xZfdt.gif') repeat;
+      background: url('https://tenor.com/ru/view/coding-gif-25731151') repeat;
       color: #FFFF00;
       border: 5px solid red;
       padding: 20px;
