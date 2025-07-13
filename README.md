@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title> BloxFun EXTREME!! </title>
+  <title>BloxFun EXTREME!!</title>
   <style>
     body {
-      background: url(''); /* starfield GIF */
+      background: url('https://media.tenor.com/oHkj9N0WBfQAAAAC/coding.gif') repeat;
       font-family: "Courier New", monospace;
       color: #00FF00;
       margin: 0;
@@ -47,7 +47,7 @@
 
     .download-button {
       font-size: 28px;
-      background: url('https://tenor.com/ru/view/coding-gif-25731151') repeat;
+      background: url('https://media.tenor.com/oHkj9N0WBfQAAAAC/coding.gif') repeat;
       color: #FFFF00;
       border: 5px solid red;
       padding: 20px;
@@ -88,38 +88,42 @@
 <body>
 
 <audio autoplay loop>
-  <source src="https://random704.github.io/BLOXFUN/BLOXFUNBLOXJOYBLOXFUNBLOXJOY.mp3" type="audio/mpeg">
+  <source src="Bloxfunjoy.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
 
-  <marquee class="marquee" scrollamount="10" behavior="alternate">🚨💾 DOWNLOAD BloxFun v1.6 - 1000% FPS BOOST! 💾🚨</marquee>
+<marquee class="marquee" scrollamount="10" behavior="alternate">
+  🚨💾 DOWNLOAD BloxFun v1.6 - 1000% FPS BOOST! 💾🚨
+</marquee>
 
-  <div class="container">
-    <h1 class="blink"> BloxFun v1.6 </h1>
-    <p><b>The ULTIMATE Roblox Lag Destroyer!!</b></p>
-    <img src="https://i.imgur.com/5jvMzGZ.gif" alt="Dancing Roblox" class="gif" width="200" />
-    <h2>What It Do:</h2>
-    <ul>
-      <li>✔️ Boosts Roblox to WARP SPEED</li>
-      <li>✔️ 100% Real NASA-Grade FPS Enhancer</li>
-      <li>✔️ DESTROYS ALL DA LAG!!!</li>
-    </ul>
+<div class="container">
+  <h1 class="blink"> BloxFun v1.6 </h1>
+  <p><b>The ULTIMATE Roblox Lag Destroyer!!</b></p>
+  <img src="bloxfun.png" alt="Dancing Roblox" class="gif" width="200" />
+  <h2>What It Do:</h2>
+  <ul>
+    <li>✔️ Boosts Roblox to WARP SPEED</li>
+    <li>✔️ 100% Real NASA-Grade FPS Enhancer</li>
+    <li>✔️ DESTROYS ALL DA LAG!!!</li>
+  </ul>
 
-    <button class="download-button">💾 DOWNLOAD .EXE (BETA)</button>
-    <p class="blink" style="color: yellow;">( Apologies but the downloads are closed for now we will be back soon :) )</p>
-  </div>
+  <button class="download-button">💾 DOWNLOAD .EXE (BETA)</button>
+  <p class="blink" style="color: yellow;">
+    ( Apologies but the downloads are closed for now we will be back soon :) )
+  </p>
+</div>
 
-  <div class="container">
-    <h3>💬 REAL Reviews from 100% Real Humans</h3>
-    <p><i>"My toaster runs Roblox now!"</i> – <b>LagLord69</b></p>
-    <p><i>"Totally not spyware."</i> – <b>DefinitelyNotAVirus.exe</b></p>
-  </div>
+<div class="container">
+  <h3>💬 REAL Reviews from 100% Real Humans</h3>
+  <p><i>"My toaster runs Roblox now!"</i> – <b>LagLord69</b></p>
+  <p><i>"Totally not spyware."</i> – <b>DefinitelyNotAVirus.exe</b></p>
+</div>
 
-  <div class="footer">
-    🚫 Not affiliated with Roblox Inc.<br>
-    📧 support@bloxfun.geocities.cool<br>
-    🧠 <span class="blink">"It only looks shady because it’s TOO POWERFUL."</span>
-  </div>
+<div class="footer">
+  🚫 Not affiliated with Roblox Inc.<br>
+  📧 support@bloxfun.geocities.cool<br>
+  🧠 <span class="blink">"It only looks shady because it’s TOO POWERFUL."</span>
+</div>
 
 </body>
 </html>
