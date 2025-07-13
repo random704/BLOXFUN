@@ -114,7 +114,7 @@
 
   <button class="download-button">💾 DOWNLOAD .EXE (BETA)</button>
   <p class="blink" style="color: yellow;">
-    ( Apologies but the downloads are closed for now we will be back soon :) )
+    ( :) )
   </p>
 </div>
 
