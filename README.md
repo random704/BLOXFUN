@@ -5,7 +5,7 @@
   <title> BloxFun EXTREME!! </title>
   <style>
     body {
-      background: url('https://i.imgur.com/OiEMgM8.gif'); /* starfield GIF */
+      background: url('https://tenor.com/ru/view/field-of-twinkle-stars-gif-9416205'); /* starfield GIF */
       font-family: "Courier New", monospace;
       color: #00FF00;
       margin: 0;
