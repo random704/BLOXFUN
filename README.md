@@ -5,7 +5,7 @@
   <title>BloxFun EXTREME!!</title>
   <style>
     body {
-      background: url('https://media.tenor.com/oHkj9N0WBfQAAAAC/coding.gif') repeat;
+      background: url('https://i.gifer.com/7VE.gif') repeat;
       font-family: "Courier New", monospace;
       color: #00FF00;
       margin: 0;
@@ -22,7 +22,7 @@
     }
 
     .container {
-      background: black;
+      background: rgba(0,0,0,0.8);
       border: 5px double red;
       margin: 20px auto;
       width: 90%;
@@ -47,7 +47,7 @@
 
     .download-button {
       font-size: 28px;
-      background: url('https://media.tenor.com/oHkj9N0WBfQAAAAC/coding.gif') repeat;
+      background: linear-gradient(45deg, #ff0000, #ff00ff, #0000ff);
       color: #FFFF00;
       border: 5px solid red;
       padding: 20px;
@@ -79,18 +79,22 @@
       border-top: 2px dashed yellow;
       margin-top: 30px;
     }
-
-    .yt-audio {
-      display: none;
-    }
   </style>
 </head>
 <body>
 
-<audio autoplay loop>
-  <source src="Bloxfunjoy.mp3" type="audio/mpeg">
+<audio autoplay loop id="bgMusic">
+  <source src="bloxfunjoy.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
+
+<script>
+  // This ensures audio can autoplay after user interaction
+  document.addEventListener('click', function() {
+    const audio = document.getElementById('bgMusic');
+    audio.play().catch(e => console.log("Audio play failed:", e));
+  }, { once: true });
+</script>
 
 <marquee class="marquee" scrollamount="10" behavior="alternate">
   🚨💾 DOWNLOAD BloxFun v1.6 - 1000% FPS BOOST! 💾🚨
@@ -122,7 +126,7 @@
 <div class="footer">
   🚫 Not affiliated with Roblox Inc.<br>
   📧 support@bloxfun.geocities.cool<br>
-  🧠 <span class="blink">"It only looks shady because it’s TOO POWERFUL."</span>
+  🧠 <span class="blink">"It only looks shady because it's TOO POWERFUL."</span>
 </div>
 
 </body>
