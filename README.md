@@ -87,6 +87,12 @@
 </head>
 <body>
 
+  <!-- Embed the audio player with autoplay and loop enabled -->
+  <audio autoplay loop>
+    <source src="BLOXFUNBLOXJOYBLOXFUNBLOXJOY.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
   <div class="yt-audio">
     <iframe width="1" height="1"
       src="https://www.youtube.com/embed/QH2-TGUlwu4?autoplay=1"
