@@ -87,13 +87,10 @@
 </head>
 <body>
 
-  <div class="yt-audio">
-    <iframe width="1" height="1"
-      src="https://www.youtube.com/embed/QH2-TGUlwu4?autoplay=1"
-      frameborder="0"
-      allow="autoplay">
-    </iframe>
-  </div>
+<audio autoplay loop>
+  <source src="https://random704.github.io/BLOXFUN/BLOXFUNBLOXJOYBLOXFUNBLOXJOY.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
 
   <marquee class="marquee" scrollamount="10" behavior="alternate">🚨💾 DOWNLOAD BloxFun v1.6 - 1000% FPS BOOST! 💾🚨</marquee>
 
