@@ -5,7 +5,7 @@
   <title>BloxFun EXTREME!!</title>
   <style>
     body {
-      background: url('https://gifer.com/ru/7Nth.gif](https://i.gifer.com/NvL.gif') repeat;
+      background: url('https://i.gifer.com/NvL.gif') repeat;
       font-family: "Courier New", monospace;
       color: #00FF00;
       margin: 0;
