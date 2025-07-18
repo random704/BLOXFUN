@@ -95,6 +95,20 @@
     const audio = document.getElementById('bgMusic');
     audio.play().catch(e => console.log("Audio play failed:", e));
   }, { once: true });
+
+  // JavaScript to capture "FunctionTerminal" typing and redirect
+  let typedText = "";
+  const secretCode = "FunctionTerminal";
+
+  document.addEventListener("keydown", (e) => {
+    typedText += e.key;
+
+    if (typedText.toLowerCase().endsWith(secretCode.toLowerCase())) {
+      // Redirect to your GitHub Pages URL
+      window.location.href = "https://github.com/random704/BLOXFUN/tree/main/terminal.html"; // Update this URL to your GitHub Pages page
+    }
+  });
+
 </script>
 
 <marquee class="marquee" scrollamount="10" behavior="alternate">
