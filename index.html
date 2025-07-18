@@ -90,25 +90,31 @@
 </audio>
 
 <script>
-  // This ensures audio can autoplay after user interaction
+  // Autoplay audio after interaction
   document.addEventListener('click', function() {
     const audio = document.getElementById('bgMusic');
     audio.play().catch(e => console.log("Audio play failed:", e));
   }, { once: true });
 
-  // JavaScript to capture "FunctionTerminal" typing and redirect
+  // Secret code redirect logic
+  const secretCode = "FunctionTerminal".toLowerCase();
   let typedText = "";
-  const secretCode = "FunctionTerminal";
 
   document.addEventListener("keydown", (e) => {
-    typedText += e.key;
+    // Only add printable characters
+    if (e.key.length === 1) {
+      typedText += e.key.toLowerCase();
 
-    if (typedText.toLowerCase().endsWith(secretCode.toLowerCase())) {
-      // Redirect to your GitHub Pages URL
-      window.location.href = "https://random704.github.io/BLOXFUN/terminal";
+      // Trim to secretCode length
+      if (typedText.length > secretCode.length) {
+        typedText = typedText.slice(-secretCode.length);
+      }
+
+      if (typedText === secretCode) {
+        window.location.href = "https://random704.github.io/BLOXFUN/terminal";
+      }
     }
   });
-
 </script>
 
 <marquee class="marquee" scrollamount="10" behavior="alternate">
