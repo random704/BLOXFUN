@@ -118,8 +118,8 @@
     </div>
   </div>
 
-  <!-- 👇 This video now uses IDIOTIC.mp4 -->
-  <video id="scaryVideo" autoplay loop>
+  <!-- Video starts muted -->
+  <video id="scaryVideo" autoplay loop muted preload="auto">
     <source src="IDIOTIC.mp4" type="video/mp4">
     お使いのブラウザは video タグに対応していません。
   </video>
@@ -237,13 +237,18 @@
       // Fade out the terminal
       terminal.style.opacity = '0';
 
-      // After fade, remove terminal and play video
+      // After fade, remove terminal and show video
       setTimeout(() => {
         terminal.style.display = 'none';
 
         const video = document.getElementById('scaryVideo');
         video.style.display = 'block';
-        video.play();
+
+        // UNMUTE and PLAY
+        video.muted = false;
+        video.play().catch(err => {
+          console.warn("Autoplay with sound failed. User interaction may be required.");
+        });
       }, 2000);
     }
   </script>
