@@ -1,112 +1,250 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>Terminal</title>
+  <meta charset="UTF-8" />
+  <title>ターミナル (Terminal)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
   <style>
     html, body {
       margin: 0;
       padding: 0;
       background-color: #0d0d0d;
-      color: #00ff99;
-      font-family: 'Courier New', Courier, monospace;
+      color: #00ffcc;
+      font-family: 'Noto Sans JP', 'Courier New', Courier, monospace;
       height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       overflow: hidden;
     }
 
-    body::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
+    #terminal {
       width: 100%;
       height: 100%;
-      background: radial-gradient(ellipse at center, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.9) 100%);
-      z-index: -1;
+      padding: 20px;
+      box-sizing: border-box;
+      position: relative;
+      background: radial-gradient(circle at center, #000 60%, #020202 100%);
+      transition: opacity 2s ease;
     }
 
-    .screen-glow {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 255, 153, 0.02);
-      box-shadow: 0 0 60px 10px rgba(0, 255, 153, 0.08);
-      pointer-events: none;
+    #output {
+      white-space: pre-wrap;
+      line-height: 1.6;
+      font-size: 16px;
     }
 
-    .terminal {
-      z-index: 2;
-      text-align: center;
+    .input-line {
+      display: flex;
+      align-items: center;
     }
 
-    h1 {
-      font-size: 2em;
+    .input-line span {
+      margin-right: 10px;
+    }
+
+    input {
+      background: none;
+      border: none;
       color: #00ffcc;
-      margin-bottom: 30px;
-    }
-
-    input[type="text"] {
-      background-color: transparent;
-      border: 2px solid #00ffcc;
-      color: #00ffcc;
-      font-size: 1.5em;
-      padding: 10px;
-      width: 400px;
-      text-align: center;
+      font: inherit;
       outline: none;
-      caret-color: #00ffcc;
-      box-shadow: 0 0 10px #00ffcc;
-      transition: box-shadow 0.3s ease;
+      width: 80%;
     }
 
-    input[type="text"]:focus {
-      box-shadow: 0 0 20px #00ffcc;
+    .binary {
+      position: absolute;
+      color: #00ffcc;
+      font-size: 14px;
+      pointer-events: none;
+      animation: fallBinary 2s linear infinite;
+      user-select: none;
+      font-weight: bold;
     }
 
-    .hint {
-      margin-top: 20px;
-      font-size: 0.9em;
-      color: #006655;
+    @keyframes fallBinary {
+      0% {
+        top: -20px;
+        opacity: 1;
+      }
+      100% {
+        top: 100%;
+        opacity: 0;
+      }
+    }
+
+    .face {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1000;
+      display: none;
+      opacity: 0;
+      animation-fill-mode: forwards;
+    }
+
+    .face img {
+      max-width: 80vw;
+      max-height: 80vh;
+      filter: drop-shadow(0 0 20px red);
+      user-select: none;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    #scaryVideo {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: 2000;
+      background-color: black;
     }
   </style>
 </head>
 <body>
-  <div class="screen-glow"></div>
-  <div class="terminal">
-    <h1>Welcome back, Operator.</h1>
-    <input type="text" id="codeInput" placeholder="Enter access code..." autocomplete="off" />
-    <div class="hint"></div>
+  <div id="terminal">
+    <div id="output"></div>
+    <div class="input-line">
+      <span>▶</span>
+      <input type="text" id="codeInput" autofocus autocomplete="off" />
+    </div>
+    <div id="face" class="face">
+      <img src="https://i.imgur.com/H8j9FfG.png" alt="恐怖の顔" />
+    </div>
   </div>
 
+  <video id="scaryVideo" autoplay loop muted>
+    <source src="jumpscare.mp4" type="video/mp4">
+    お使いのブラウザは video タグに対応していません。
+  </video>
+
   <script>
-    const codeMap = {
+    const codes = {
       'amirancalamari320': 'https://www.youtube.com/watch?v=mYBRTi8MM3c',
       'snowdude1447': 'https://www.youtube.com/watch?v=QnC661_njPs',
-      'roploksiaira': 'https://www.youtube.com/watch?v=j0lSpNtjPM8'
-      'temkatv99': 'https://www.youtube.com/watch?v=bFLYUJY2SkU'
+      'roploksiaira': 'https://www.youtube.com/watch?v=j0lSpNtjPM8',
+      'temkatv99': 'https://www.youtube.com/watch?v=bFLYUJY2SkU',
+      'clientside': 'https://www.youtube.com/watch?v=Ct6BUPvE2sM'
     };
 
-    const shutdownCode = '1arandompersonlol1';
+    let usedCodes = {};
+    let mimicCount = 0;
+    let blockedUntil = null;
 
-    document.getElementById('codeInput').addEventListener('keydown', function(e) {
+    const input = document.getElementById('codeInput');
+    const output = document.getElementById('output');
+    const terminal = document.getElementById('terminal');
+    const face = document.getElementById('face');
+
+    input.addEventListener('keydown', function (e) {
       if (e.key === 'Enter') {
-        const code = this.value.trim().toLowerCase();
-
-        if (codeMap[code]) {
-          window.location.href = codeMap[code];
-        } else if (code === shutdownCode) {
-          // Simulate shutdown
-          document.body.innerHTML = '';
-          document.body.style.backgroundColor = 'black';
-        } else {
-          this.value = '';
-          this.placeholder = 'Invalid code...';
-        }
+        const code = input.value.trim();
+        output.innerHTML += `▶ ${code}<br>`;
+        handleCode(code);
+        input.value = '';
       }
     });
+
+    function handleCode(code) {
+      const now = new Date();
+
+      if (blockedUntil && now < blockedUntil) {
+        const remaining = Math.ceil((blockedUntil - now) / 60000);
+        output.innerHTML += `[!] アクセス拒否中。${remaining} 分後に再試行してください。<br>`;
+        return;
+      }
+
+      if (usedCodes[code]) {
+        output.innerHTML += `[!] コード "${code}" は既に使用されています。<br>`;
+        return;
+      }
+
+      if (codes[code]) {
+        window.location.href = codes[code];
+        return;
+      }
+
+      switch (code) {
+        case '1arandompersonlol1':
+          usedCodes[code] = true;
+          triggerBinarySequence();
+          break;
+
+        case 'why':
+          output.innerHTML += '[読み込み中]<br><br>' +
+            '喰らえ 飲み込め むさぼれ 味わえ 喰らえ 飲み込め むさぼれ 味わえ 喰らえ...<br>';
+          break;
+
+        case 'lies':
+          output.innerHTML += '[!] システム整合性が失われています...<br>';
+          terminal.classList.add('fall-apart');
+          setTimeout(() => {
+            terminal.innerHTML = '<div style="text-align:center;margin-top:40vh;">[ ターミナル破損 - 再起動が必要です ]</div>';
+          }, 2000);
+          break;
+
+        case 'can you stop':
+          output.innerHTML += '申し出を断ります<br>';
+          break;
+
+        case 'who are you':
+          output.innerHTML += 'クライアントサイド<br>';
+          break;
+
+        case 'クライアントサイド':
+          output.innerHTML += 'それが私です！<br>';
+          break;
+
+        case 'それが私です!':
+          handleMimicry(code);
+          break;
+
+        default:
+          if (code === 'それが私です!' || code === 'クライアントサイド') {
+            handleMimicry(code);
+          } else {
+            output.innerHTML += '不明なコマンドです。<br>';
+          }
+          break;
+      }
+    }
+
+    function handleMimicry(code) {
+      mimicCount++;
+      if (mimicCount === 1) {
+        output.innerHTML += 'ねえ、真似しないで。<br>';
+      } else if (mimicCount >= 2) {
+        output.innerHTML += 'くたばれ。<br>';
+        input.disabled = true;
+        blockedUntil = new Date(Date.now() + 25 * 60 * 1000); // 25分
+        setTimeout(() => {
+          input.disabled = false;
+          mimicCount = 0;
+          output.innerHTML += '[アクセスが復元されました]<br>';
+        }, 25 * 60 * 1000);
+      }
+    }
+
+    function triggerBinarySequence() {
+      input.disabled = true;
+
+      // Fade out the terminal
+      terminal.style.opacity = '0';
+
+      // After fade, remove terminal and play video
+      setTimeout(() => {
+        terminal.style.display = 'none';
+
+        const video = document.getElementById('IDIOTIC');
+        video.style.display = 'block';
+        video.play();
+      }, 2000);
+    }
   </script>
 </body>
 </html>
