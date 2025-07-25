@@ -118,8 +118,8 @@
     </div>
   </div>
 
-  <!-- Video starts muted -->
-  <video id="scaryVideo" autoplay loop muted preload="auto">
+  <!-- Fixed: No autoplay/muted here -->
+  <video id="scaryVideo" loop preload="auto">
     <source src="IDIOTIC.mp4" type="video/mp4">
     お使いのブラウザは video タグに対応していません。
   </video>
@@ -130,7 +130,9 @@
       'snowdude1447': 'https://www.youtube.com/watch?v=QnC661_njPs',
       'roploksiaira': 'https://www.youtube.com/watch?v=j0lSpNtjPM8',
       'temkatv99': 'https://www.youtube.com/watch?v=bFLYUJY2SkU',
-      'clientside': 'https://www.youtube.com/watch?v=Ct6BUPvE2sM'
+      'clientside': 'https://www.youtube.com/watch?v=Ct6BUPvE2sM',
+      'bobbytheturret445': 'https://www.youtube.com/watch?v=rbZHwCNrubg',
+      'GoldenMario': 'https://www.youtube.com/watch?v=5jZzMyjkdGs&list=PLD98ROECVFmYmNTUMZjRUXWyzWYIF5UeV'
     };
 
     let usedCodes = {};
@@ -198,19 +200,12 @@
           break;
 
         case 'クライアントサイド':
-          output.innerHTML += 'それが私です！<br>';
-          break;
-
         case 'それが私です!':
           handleMimicry(code);
           break;
 
         default:
-          if (code === 'それが私です!' || code === 'クライアントサイド') {
-            handleMimicry(code);
-          } else {
-            output.innerHTML += '不明なコマンドです。<br>';
-          }
+          output.innerHTML += '不明なコマンドです。<br>';
           break;
       }
     }
@@ -233,19 +228,15 @@
 
     function triggerBinarySequence() {
       input.disabled = true;
-
-      // Fade out the terminal
       terminal.style.opacity = '0';
 
-      // After fade, remove terminal and show video
       setTimeout(() => {
         terminal.style.display = 'none';
 
         const video = document.getElementById('scaryVideo');
         video.style.display = 'block';
-
-        // UNMUTE and PLAY
         video.muted = false;
+
         video.play().catch(err => {
           console.warn("Autoplay with sound failed. User interaction may be required.");
         });
