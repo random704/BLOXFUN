@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OUR HAPPY CUSTOMERS</title>
+  <style>
+    body {
+      background-color: black;
+      color: lime;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background-image: url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
+      background-repeat: repeat;
+    }
+
+    h1 {
+      font-size: 72px;
+      color: red;
+      text-align: center;
+      text-shadow: 3px 3px yellow;
+      animation: flicker 1.5s infinite;
+    }
+
+    @keyframes flicker {
+      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+      }
+      20%, 22%, 24%, 55% {
+        opacity: 0;
+      }
+    }
+
+    ul {
+      font-size: 24px;
+      list-style-type: square;
+      margin: 50px;
+    }
+
+    li {
+      margin-bottom: 20px;
+      animation: pulse 2s infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        color: lime;
+      }
+      100% {
+        transform: scale(1.05);
+        color: magenta;
+      }
+    }
+
+    .blink {
+      animation: blink 1s step-start infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .gif {
+      display: block;
+      margin: 0 auto;
+      margin-top: 40px;
+    }
+
+    .marquee {
+      color: cyan;
+      font-size: 28px;
+      background: darkred;
+      padding: 10px;
+      border: 3px double yellow;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 class="blink">OUR HAPPY CUSTOMERS</h1>
+
+  <marquee class="marquee" behavior="alternate" scrollamount="8">SO MANY SATISFIED CUSTOMERS</marquee>
+
+  <ul>
+    <li>EPICGUY289 - "THIS PRODUCT MADE MY LIFE BETTER"</li>
+    <li>SOURCEFAN_498 - "i can finally run roblox on my fridge"</li>
+    <li>bobbytheturret445 - "l i f e"</li>
+    <li>1arandompersonlol1 - "???"</li>
+    <li>GoldenMario - "???"</li>
+  </ul>
+
+  <img class="gif" src="https://i.gifer.com/7VE.gif" alt="Spooky GIF" width="300" height="auto">
+
+  <audio autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+</body>
+</html>
