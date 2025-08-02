@@ -241,6 +241,45 @@
         });
       }, 2000);
     }
+
+    // ====== DEVTOOLS DETECTION & KICK SCRIPT ======
+    (function detectDevTools() {
+      let devtoolsOpen = false;
+
+      function checkDevTools() {
+        const threshold = 160; // px
+
+        const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+        const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+
+        if (widthThreshold || heightThreshold) {
+          devtoolsOpen = true;
+        } else {
+          devtoolsOpen = false;
+        }
+
+        if (devtoolsOpen) {
+          alert('開発者ツールが検出されました。アクセスを拒否します。');
+          window.location.href = 'about:blank';
+        }
+      }
+
+      window.addEventListener('resize', checkDevTools);
+
+      window.addEventListener('keydown', e => {
+        // Block F12, Ctrl+Shift+I, Ctrl+Shift+C, Ctrl+Shift+J
+        if (
+          e.key === 'F12' ||
+          (e.ctrlKey && e.shiftKey && ['I', 'C', 'J'].includes(e.key.toUpperCase()))
+        ) {
+          alert('開発者ツールのショートカットは無効化されています。');
+          e.preventDefault();
+          window.location.href = 'about:blank';
+        }
+      });
+
+      setInterval(checkDevTools, 1000);
+    })();
   </script>
 </body>
 </html>
